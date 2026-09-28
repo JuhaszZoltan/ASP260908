@@ -3,16 +3,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ASP260908.Data;
 
-public static class SeedData
+public static class SeedDatabase
 {
     public static void Initialize(IServiceProvider serviceProvider)
     {
-        using ApplicationDbContext context = new(
+        using ApplicationDbContext _context = new(
             serviceProvider.GetRequiredService<DbContextOptions<ApplicationDbContext>>());
         
-        if (context.Movies.Any()) return;
+        if (_context.Movies.Any()) return;
 
-        context.Movies.AddRange(
+        _context.Movies.AddRange(
             new Movie
             {
                 //01
@@ -69,6 +69,6 @@ public static class SeedData
                 Genre = "Drama",
                 Price = 1000M,
             });
-        context.SaveChanges();
+        _context.SaveChanges();
     }
 }
