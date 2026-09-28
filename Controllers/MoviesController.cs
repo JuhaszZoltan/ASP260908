@@ -16,9 +16,7 @@ public class MoviesController : Controller
     // GET: ~/movies/index
     public async Task<IActionResult> Index()    
     {
-        var movies = _context.Movies.Where(m => m.Title.StartsWith("E"));
-
-        return View(movies);
+        return View(_context.Movies.ToList());
     }
 
     // GET: ~/movies/details/{id}
