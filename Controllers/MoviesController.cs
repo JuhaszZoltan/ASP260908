@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ASP260908.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ASP260908.Controllers;
 
@@ -14,18 +15,32 @@ public class MoviesController : Controller
     }
 
     // GET: ~/movies/[index]
-    public async Task<IActionResult> Index(string searchString)    
+    public async Task<IActionResult> Index(string movieGenre, string searchString)    
     {
         if (_context.Movies == null) return Problem("Entity ApplicationDbContext is null");
 
+        var genres = _context.Movies.Select(m => m.Genre).Distinct().Order();
+
         var movies = _context.Movies.Select(m => m);
+
 
         if (!string.IsNullOrEmpty(searchString))
         {
             movies = movies.Where(m => m.Title!.ToUpper().Contains(searchString.ToUpper()));
         }
 
-        return View(await movies.ToListAsync());
+        if (!string.IsNullOrEmpty(movieGenre))
+        {
+            movies = movies.Where(m => m.Genre == movieGenre);
+        }
+
+        MovieGenreViewModel movieGenreVM = new()
+        {
+            Genres = new SelectList(await genres.ToListAsync()),
+            Movies = await movies.ToListAsync(),           
+        };
+
+        return View(movieGenreVM);
     }
 
     // GET: ~/movies/details/{id:int}
