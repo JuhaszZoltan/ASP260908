@@ -19,6 +19,7 @@ public static class SeedDatabase
                 Title = "Kill Bill vol. 1",
                 ReleaseDate = new(2003, 10, 16),
                 Genre = "Action",
+                Rating = "R",
                 Price = 1500M,
             },
             new Movie
@@ -27,6 +28,7 @@ public static class SeedDatabase
                 Title = "Kill Bill vol. 2",
                 ReleaseDate = new(2004, 04, 29),
                 Genre = "Action",
+                Rating = "R",
                 Price = 2000M,
             },
             new Movie
@@ -35,6 +37,7 @@ public static class SeedDatabase
                 Title = "Cloud Atlas",
                 ReleaseDate = new(2012, 11, 22),
                 Genre = "Drama",
+                Rating = "R",
                 Price = 2700M,
             },
             new Movie
@@ -43,6 +46,7 @@ public static class SeedDatabase
                 Title = "The Shawshark Redemption",
                 ReleaseDate = new(1994, 05, 25),
                 Genre = "Drama",
+                Rating = "R",
                 Price = 1000M,
             },
             new Movie
@@ -51,6 +55,7 @@ public static class SeedDatabase
                 Title = "The Lord of the Rings: The Two Towers",
                 ReleaseDate = new(2002, 01, 09),
                 Genre = "Adventure",
+                Rating = "PG-13",
                 Price = 2200M,
             },
             new Movie
@@ -59,6 +64,7 @@ public static class SeedDatabase
                 Title = "The Matrix",
                 ReleaseDate = new(1999, 08, 05),
                 Genre = "Action",
+                Rating = "R",
                 Price = 1800M,
             },
             new Movie
@@ -67,6 +73,7 @@ public static class SeedDatabase
                 Title = "One Flew Over the Cuckoo's Nest",
                 ReleaseDate = new(1975, 05, 19),
                 Genre = "Drama",
+                Rating = "R",
                 Price = 1000M,
             });
         _context.SaveChanges();
